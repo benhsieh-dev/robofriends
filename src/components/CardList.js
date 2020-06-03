@@ -5,7 +5,7 @@ import Card from './Card';
 const Cardlist = ({robots}) => {
 
     return (
-      <div className="tc bg-light-green dib br3 pa3 ma2 grow bw-2 shadow-5">
+      <div>
         {robots.map((user, idx) => {
           return (
             <Card
