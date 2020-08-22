@@ -7,17 +7,9 @@ import ErrorBoundry from '../components/ErrorBoundry';
 import "./App.css";
 
 import { setSearchField, requestRobots } from '../actions';
+import Header from '../components/Header';
 
-// const msp = state => {
-//     return {
-//         searchField: state.searchRobots.searchField,
-//         robots: state.requestRobots.robots,
-//         isPending: state.requestRobots.isPending,
-//         Error: state.requestRobots.error
-//     }
-// }
-
-const mapStateToProps = (state) => {
+const msp = (state) => {
   return {
     searchField: state.searchRobots.searchField,
     robots: state.requestRobots.robots,
@@ -25,15 +17,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-
-// const mdp = (dispatch) => {
-//     return {
-//         onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-//         onRequestRobots: () => dispatch(requestRobots())
-//     }
-// }
-
-const mapDispatchToProps = (dispatch) => {
+const mdp = (dispatch) => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
     onRequestRobots: () => dispatch(requestRobots()),
@@ -52,19 +36,9 @@ class App extends Component  {
             return robot.name.toLowerCase().includes(searchField.toLowerCase())
          })
 
-        //  return isPending ? <h1>Loading</h1> : 
-        //   (<div className='tc'>
-        //     <h1>Robofriends</h1>
-        //     <SearchBox searchChange={onSearchChange}/>
-        //     <Scroll>
-        //         <ErrorBoundry>
-        //             <CardList robots={filteredRobots} />
-        //         </ErrorBoundry>
-        //     </Scroll>
-        //   </div>);
         return (
           <div className="tc">
-            <h1 className="f1">RoboFriends</h1>
+            <Header />
             <SearchBox searchChange={onSearchChange} />
             <Scroll>
               {isPending ? (
@@ -80,4 +54,4 @@ class App extends Component  {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App); 
+export default connect(msp, mdp)(App); 
