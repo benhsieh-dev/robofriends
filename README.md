@@ -7,5 +7,6 @@ Allows user to search and communicate with an API
 ## Technologies Used
 - React JS
 - CSS
+- Tachyons
 - HTML
 - JavaScript 
